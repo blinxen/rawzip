@@ -117,9 +117,22 @@ impl<T: AsRef<[u8]>> ZipSliceArchive<T> {
     ///
     /// This is useful for unifying code that might handle both slice-based
     /// and reader-based archives.
+    #[deprecated(note = "Use `ZipSliceArchive::into_zip_archive` instead")]
     pub fn into_reader(self) -> ZipArchive<T> {
         ZipArchive {
             reader: self.data,
+            eocd: self.eocd,
+        }
+    }
+
+    /// Converts the [`ZipSliceArchive`] into a general [`ZipArchive`].
+    ///
+    /// This is useful for unifying code that might handle both slice-based and
+    /// reader-based archives. The data is wrapped in a [`std::io::Cursor`] to
+    /// provide the [`ReaderAt`] implementation needed for [`ZipArchive`].
+    pub fn into_zip_archive(self) -> ZipArchive<std::io::Cursor<T>> {
+        ZipArchive {
+            reader: std::io::Cursor::new(self.data),
             eocd: self.eocd,
         }
     }
