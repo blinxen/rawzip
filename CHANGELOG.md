@@ -1,3 +1,9 @@
+## v0.4.2 - November 21st, 2025
+
+- Add `ZipSliceArchive::into_zip_archive` that guarantees a `ReaderAt` implementation
+- Deprecate `ZipSliceArchive::into_reader` that did not make the same guarantee
+- Add `Debug` implementations to public types
+
 ## v0.4.1 - August 27nd, 2025
 
 Allow additional zip files to be parsed where the central directory may be relocated or where attempting to auto-correct the central directory location based on the end of the central directory record and size of central directory would lead to an unintended offset.
