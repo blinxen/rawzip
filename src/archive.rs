@@ -45,7 +45,7 @@ pub const RECOMMENDED_BUFFER_SIZE: usize = 1 << 16;
 /// }
 /// ```
 #[derive(Debug, Clone)]
-pub struct ZipSliceArchive<T: AsRef<[u8]>> {
+pub struct ZipSliceArchive<T> {
     data: T,
     eocd: EndOfCentralDirectory,
 }
