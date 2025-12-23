@@ -1,3 +1,8 @@
+## v0.4.3 - December 22nd, 2025
+
+- Update ZipSliceArchive to prefer impl-side `AsRef<[u8]>` constraint
+- Include LICENSE.txt, assets, and test code in published package
+
 ## v0.4.2 - November 21st, 2025
 
 - Add `ZipSliceArchive::into_zip_archive` that guarantees a `ReaderAt` implementation
